@@ -1,0 +1,30 @@
+body {
+  width: auto;
+  height: auto;
+  background-color: #E8E8E8;
+}
+
+.header {
+  text-align: center; 
+}
+
+.rps {
+  text-align: center; 
+}
+
+.r, .p, .s {
+  margin-right: 20px;
+  border: 1px solid #B91E1E;
+  background: -webkit-linear-gradient(top,#8F1313,#6F1111);
+  border-radius: 2px;
+  color: #fff;
+  font-weight: bold; 
+  height: 50px;
+  width: 100px;
+  padding-left: 14px; 
+  padding-right: 14px;
+}
+
+.r:hover, .p:hover, .s:hover {
+  filter: brightness(150%);
+}

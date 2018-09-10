@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock! Paper! Scissors!</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+<div class="header"> 
+  <h1>Rock! Paper! Scissors!</h1>
+  <h2>Instructions: Play a classic game of rock, paper, scissors! The game consists of 5 rounds. First to 5 wins will be declared the winner! As per standard rules: rock beats scissors, paper beats rock and scissors beats paper. Pick below to begin the round!
+</div>
+<p id="result"></p>
+<div class="rps">
+  <button class="r" value="rock" onclick="playRound('rock')">Rock</button>
+  <button class="p" value="paper" onclick="playRound('paper')">Paper</button>
+  <button class="s" value="scissors" onclick="playRound('scissors')">Scissors</button>
+</div>
+
+</body>
+
+<script>
+
+let computerSelection
+let playerSelection 
+let playerScore = 0;
+let computerScore = 0;
+
+/* Main function for RPS */
+
+function playRound(playerSelection, computerSelection) {
+  computerSelection = computerPlay(); /* Sets the value of computerSelection equivalent to the return of the computerPlay() function which initializes as a parameter of the playRound() function */ 
+
+  if(playerSelection === computerSelection) {
+    alert("Tie! You and the computer chose the same thing! No score added!");
+    return;
+  }
+
+  if((playerSelection === "rock" && computerSelection === "scissors")
+					||
+    (playerSelection === "paper" && computerSelection === "rock")
+					||
+    (playerSelection === "scissors" && computerSelection === "paper")) {
+      playerScore++; /* Increases playerScore by 1 since player wins with these results */
+      alert(playerSelection.substring(0, 1).toUpperCase() + playerSelection.substring(1).toLowerCase() + " beats " + computerSelection + "! Player wins the round! " + playerScore + " - " + computerScore); /* Expression occurs if any of the conditions returns true */
+      } else {
+        computerScore++; /* Increases computerScore by 1 since computer wins with these results */
+        alert(computerSelection.substring(0, 1).toUpperCase() + computerSelection.substring(1).toLowerCase() + " beats " + playerSelection + "! Computer wins the round! " + playerScore + " - " + computerScore); /* Expression occurs if conditions return false */
+      }
+  gameScore(); /* Runs to check if a winner should be declared and the score reset */
+}
+
+/* Function that randomly generates the computer's choice */
+
+function computerPlay() {
+  randomNum = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNum === 1) {
+    return 'rock'; 
+  } else if (randomNum === 2) {
+    return 'paper';
+  } else {
+    return 'scissors';
+  }
+
+}
+
+/* Function that tracks the score of the game and declares a winner when someone reaches 5 wins */
+
+function gameScore() {
+  if(playerScore === 5) {
+    alert("Game over! Player wins! Player: " + playerScore + " - Computer: " + computerScore);
+    playerScore = 0;
+    computerScore = 0;
+  } else if(computerScore === 5) {
+    alert("Game over! You lose! Player: " + playerScore + " - Computer: " + computerScore);
+    playerScore = 0;
+    computerScore = 0;
+  }
+}
+
+</script>
+
+</html
