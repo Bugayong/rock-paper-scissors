@@ -10,8 +10,9 @@
 <div class="header"> 
   <h1>Rock! Paper! Scissors!</h1>
   <h2>Instructions: Play a classic game of rock, paper, scissors! The game consists of 5 rounds. First to 5 wins will be declared the winner! As per standard rules: rock beats scissors, paper beats rock and scissors beats paper. Pick below to begin the round!
+
+  <h3 id="result"></h3>
 </div>
-<p id="result"></p>
 <div class="rps">
   <button class="r" value="rock" onclick="playRound('rock')">Rock</button>
   <button class="p" value="paper" onclick="playRound('paper')">Paper</button>
@@ -33,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay(); /* Sets the value of computerSelection equivalent to the return of the computerPlay() function which initializes as a parameter of the playRound() function */ 
 
   if(playerSelection === computerSelection) {
-    alert("Tie! You and the computer chose the same thing! No score added!");
+    document.getElementById("result").innerHTML = "Tie! You and the computer chose the same thing! No score added!";
     return;
   }
 
@@ -43,10 +44,10 @@ function playRound(playerSelection, computerSelection) {
 					||
     (playerSelection === "scissors" && computerSelection === "paper")) {
       playerScore++; /* Increases playerScore by 1 since player wins with these results */
-      alert(playerSelection.substring(0, 1).toUpperCase() + playerSelection.substring(1).toLowerCase() + " beats " + computerSelection + "! Player wins the round! " + playerScore + " - " + computerScore); /* Expression occurs if any of the conditions returns true */
+      document.getElementById("result").innerHTML = playerSelection.substring(0, 1).toUpperCase() + playerSelection.substring(1).toLowerCase() + " beats " + computerSelection + "! Player wins the round! " + playerScore + " - " + computerScore; /* Expression occurs if any of the conditions returns true */
       } else {
         computerScore++; /* Increases computerScore by 1 since computer wins with these results */
-        alert(computerSelection.substring(0, 1).toUpperCase() + computerSelection.substring(1).toLowerCase() + " beats " + playerSelection + "! Computer wins the round! " + playerScore + " - " + computerScore); /* Expression occurs if conditions return false */
+        document.getElementById("result").innerHTML = computerSelection.substring(0, 1).toUpperCase() + computerSelection.substring(1).toLowerCase() + " beats " + playerSelection + "! Computer wins the round! " + playerScore + " - " + computerScore; /* Expression occurs if conditions return false */
       }
   gameScore(); /* Runs to check if a winner should be declared and the score reset */
 }
